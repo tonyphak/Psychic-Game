@@ -8,11 +8,12 @@ var losses = 0;
 var guessesLeft = 9;
 var yourGuess = [];
 
-//create function to reset yourGuess array:
-//function playerGuess(){
-   // for(var i = 0; i < 9; i++);
-//    yourGuess = [];
-//}
+var winDiv = document.getElementById("wins-text");
+var lossDiv = document.getElementById("losses-text");
+var guessDiv = document.getElementById("guesses-left");
+var yourDiv = document.getElementById("your-guess");
+
+
 
 //start JS on key press
 document.onkeypress = function(event){
@@ -20,14 +21,13 @@ document.onkeypress = function(event){
  
 //create JS for computer to randomly choose letter
     var computerGuesses = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-
+   
 //Logic for when the user guesses correctly and "Your guess so far" resets. Also, alerts user to winning    
     console.log(userGuess);
     if(userGuess === computerGuesses){
         wins++;
         alert("You Won!");
         guessesLeft = 9;
-   //     playerGuess();
         yourGuess = [];
     }
 //if user does not guess computer's letter correctly then guessesLeft goes down by 1 and guessed letter is entered in "Your guess so far"
@@ -41,16 +41,14 @@ document.onkeypress = function(event){
        losses++;
        alert("You lost :(");
        guessesLeft = 9;
-   //    playerGuess();
        yourGuess = [];
     }
 //create code to display scores and guess on html
 
-document.getElementById("wins-text").innerHTML = "Wins: " + wins;
-document.getElementById("losses-text").innerHTML = "Losses: " + losses;
-document.getElementById("guesses-left").innerHTML = "Guesses Left: " +guessesLeft;
-document.getElementById("your-guess").innerHTML = "Your Guesses so far: " + yourGuess;
-  
+winDiv.textContent = "Wins: " + wins;
+lossDiv.textContent = "Losses: " + losses;
+guessDiv.textContent = "Guesses Left: " + guessesLeft;
+yourDiv.textContent = "Your Guesses so far: " + yourGuess.join(', ');  
 }
 
 
