@@ -14,16 +14,15 @@ var guessDiv = document.getElementById("guesses-left");
 var yourDiv = document.getElementById("your-guess");
 
 
-
 //start JS on key press
 document.onkeypress = function(event){
-    var userGuess = event.key.toLowerCase();
- 
+
 //create JS for computer to randomly choose letter
+    var userGuess = event.key.toLowerCase();
     var computerGuesses = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-   
+    console.log(computerGuesses);
+    
 //Logic for when the user guesses correctly and "Your guess so far" resets. Also, alerts user to winning    
-    console.log(userGuess);
     if(userGuess === computerGuesses){
         wins++;
         alert("You Won!");
@@ -43,12 +42,14 @@ document.onkeypress = function(event){
        guessesLeft = 9;
        yourGuess = [];
     }
+
+
 //create code to display scores and guess on html
 
 winDiv.textContent = "Wins: " + wins;
 lossDiv.textContent = "Losses: " + losses;
 guessDiv.textContent = "Guesses Left: " + guessesLeft;
 yourDiv.textContent = "Your Guesses so far: " + yourGuess.join(', ');  
-}
 
+}
 
